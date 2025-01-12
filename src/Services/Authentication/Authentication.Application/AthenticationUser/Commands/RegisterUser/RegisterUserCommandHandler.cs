@@ -5,7 +5,8 @@ using MediatR;
 
 namespace Authentication.Application.AthenticationUser.Commands.RegisterUser
 {
-    public class RegisterUserCommandHandler(IUserRepository repository, IMapper mapper) : IRequestHandler<RegisterUserCommand, RegisterUserCommandResult>
+    public class RegisterUserCommandHandler(IUserRepository repository,
+        IMapper mapper) : IRequestHandler<RegisterUserCommand, RegisterUserCommandResult>
     {
         public async Task<RegisterUserCommandResult> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {

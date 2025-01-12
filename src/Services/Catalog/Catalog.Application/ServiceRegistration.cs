@@ -1,17 +1,15 @@
-﻿using Authentication.Application.Behaviour;
+﻿using Catalog.Application.Behaviour;
 using FluentValidation;
-using FluentValidation.AspNetCore;
-using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace Authentication.Application
+namespace Catalog.Application
 {
     public static class ServiceRegistration
     {
-        public static IServiceCollection RegisterApplicationServices(this IServiceCollection services) 
+        public static IServiceCollection RegisterApplicationService(this IServiceCollection services) 
         {
-            services.AddMediatR(config =>
+            services.AddMediatR(config => 
             {
                 config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
                 config.AddOpenBehavior(typeof(ValidationBehavior<,>));
