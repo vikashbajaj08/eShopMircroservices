@@ -8,7 +8,8 @@ namespace Authentication.Application.MappingProfile
     {
         public UserMappingProfile()
         {
-            CreateMap<User, UserDTO>();
+            CreateMap<User, UserDTO>()
+                .ForMember(dest=>dest.Roles, opt=>opt.MapFrom(src=>src.Roles.Select(r=>r.Name).ToArray()));
             CreateMap<User, UserRegisterDTO>().ReverseMap();
         }
     }

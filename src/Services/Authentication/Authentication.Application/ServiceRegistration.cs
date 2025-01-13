@@ -13,10 +13,12 @@ namespace Authentication.Application
         {
             services.AddMediatR(config =>
             {
-                config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-                config.AddOpenBehavior(typeof(ValidationBehavior<,>));
+                config.RegisterServicesFromAssembly(typeof(ValidationBehavior<,>).Assembly);
+                config.RegisterServicesFromAssembly(typeof(LoggingBehaviour<,>).Assembly);
             });
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddTransient(typeof(IPipelineBehavior<,>),typeof(ValidationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>),typeof(LoggingBehaviour<,>));
             return services;
         }
     }

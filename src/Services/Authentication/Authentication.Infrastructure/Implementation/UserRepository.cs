@@ -21,7 +21,7 @@ namespace Authentication.Infrastructure.Implementation
 
         public async Task<User> LoginUser(string email, string password)
         {
-            var user = await dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+            var user = await dbContext.Users.Include(r=>r.Roles).FirstOrDefaultAsync(u => u.Email == email);
 
             if (user != null)
             {

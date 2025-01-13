@@ -19,7 +19,7 @@ namespace Catalog.Application.Commands.AddProduct
         public AddProductCommandValidator()
         {
             RuleFor(p=>p.Product.Name).NotEmpty().WithMessage("Product Name is required");
-            RuleFor(p => p.Product.UnitPrice).LessThanOrEqualTo(0).WithMessage("Product price must be greater than 0");
+            RuleFor(p => p.Product.UnitPrice).GreaterThan(0).WithMessage("Product price must be greater than 0");
         }
     }
     

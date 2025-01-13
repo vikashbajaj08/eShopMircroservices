@@ -1,12 +1,5 @@
-﻿using AutoMapper;
-using Catalog.Domain.Interface;
-using FluentValidation;
+﻿using Catalog.Domain.Interface;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Catalog.Application.Commands.DeleteProduct
 {

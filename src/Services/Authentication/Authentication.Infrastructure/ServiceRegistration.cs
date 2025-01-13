@@ -4,11 +4,9 @@ using Authentication.Infrastructure.Implementation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Serilog;
+using Serilog.Extensions.Logging;
+
 
 namespace Authentication.Infrastructure
 {
@@ -19,6 +17,9 @@ namespace Authentication.Infrastructure
             services.AddDbContext<AuthenticationDbContext>(option =>{
                 option.UseSqlServer(configuration.GetConnectionString("AuthenticationDatabase"));
             });
+
+            Log.Logger = new LoggerConfiguration().
+                ReadFrom.Configuration(configuration).CreateLogger();
 
             services.AddScoped<IUserRepository, UserRepository>();
 
